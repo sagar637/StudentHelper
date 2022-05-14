@@ -56,7 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   subtitle: Text("BCIS Study Materials"),
                   leading:
                       CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-                  trailing: Icon(Icons.arrow_forward))),
+                  trailing: Icon(Icons.arrow_forward),
+                  onTap: () {
+                    Navigator.pushNamed(context, 'BCIS');
+                  })),
           Card(
               child: ListTile(
                   title: Text("BBA"),
@@ -66,14 +69,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   trailing: Icon(Icons.arrow_forward))),
           Card(
               child: ListTile(
-                  title: Text("BBA-BI"),
-                  subtitle: Text("BBA-BI Study Materials"),
-                  leading:
-                      CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-                  trailing: Icon(Icons.arrow_forward),
-                  onTap: () {
-                    Navigator.pushNamed(context, 'BBA_BI');
-                  })),
+            title: Text("BBA-BI"),
+            subtitle: Text("BBA-BI Study Materials"),
+            leading: CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+            trailing: Icon(Icons.arrow_forward),
+            // onTap: () {
+            //   Navigator.pushNamed(context, 'BBA_BI');
+            // }
+          )),
           Card(
               child: ListTile(
                   title: Text("MBA"),

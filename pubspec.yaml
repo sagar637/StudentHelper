@@ -37,6 +37,15 @@ dependencies:
   firebase_core: ^1.16.0
   firebase_auth: ^3.3.17
   modal_progress_hud_nsn: ^0.1.0-nullsafety-1
+  firebase_storage: ^10.2.16
+  dio: ^4.0.6
+  gallery_saver: ^2.3.2
+ 
+
+  # store file on device
+  path_provider: ^2.0.10
+  # flutter_full_pdf_viewer: ^1.0.6
+  # http: ^0.12.0+4
 dev_dependencies:
   flutter_test:
     sdk: flutter
