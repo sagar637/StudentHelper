@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
-import 'package:gallery_saver/gallery_saver.dart';
+
 
 import '../Models/modeindex.dart';
 
@@ -16,9 +16,7 @@ class FirebaseApi {
   static Future<List<FirebaseFile>> listAll(String path) async {
     final ref = FirebaseStorage.instance.ref(path);
     final result = await ref.listAll();
-
     final urls = await _getDownloadLinks(result.items);
-
     return urls
         .asMap()
         .map((index, url) {
@@ -32,47 +30,46 @@ class FirebaseApi {
         .toList();
   }
 
+  // static Future downloadFile(Reference ref) async {
+
+    // final islandRef = ref.child("Semester1/");
+    //final url = await ref.getDownloadURL();
+    // final dir = await getApplicationDocumentsDirectory();
+    // final filePath = ('${dir.path}/${ref.name}');
+    // final file  = File(filePath);
+    // await Dio().download(url, file);
+
+
+    // final downloadTask = islandRef.writeToFile(file);
+    // downloadTask.snapshotEvents.listen((taskSnapshot) {
+    //   switch (taskSnapshot.state) {
+    //     case TaskState.running:
+    //       // TODO: Handle this case.
+    //       break;
+    //     case TaskState.paused:
+    //       // TODO: Handle this case.
+    //       break;
+    //     case TaskState.success:
+    //       // TODO: Handle this case.
+    //       break;
+    //     case TaskState.canceled:
+    //       // TODO: Handle this case.
+    //       break;
+    //     case TaskState.error:
+    //       // TODO: Handle this case.
+    //       break;
+    //   }
+    // });
   static Future downloadFile(Reference ref) async {
-    final islandRef = ref.child("Semester1/");
-    final url = await ref.getDownloadURL();
-    final dir = await getApplicationDocumentsDirectory();
-    final filePath = ('${dir.path}/${ref.name}');
-    final file = File(filePath);
-    await Dio().download(url, file);
+final url = await ref.getDownloadURL();
+final tempDir = await getTemporaryDirectory();
+final path = '${tempDir.path}/${ref.name}';
+await Dio().download(url, path).toString();
 
-    final downloadTask = islandRef.writeToFile(file);
-    downloadTask.snapshotEvents.listen((taskSnapshot) {
-      switch (taskSnapshot.state) {
-        case TaskState.running:
-          // TODO: Handle this case.
-          break;
-        case TaskState.paused:
-          // TODO: Handle this case.
-          break;
-        case TaskState.success:
-          // TODO: Handle this case.
-          break;
-        case TaskState.canceled:
-          // TODO: Handle this case.
-          break;
-        case TaskState.error:
-          // TODO: Handle this case.
-          break;
-      }
-    });
-//   static Future downloadFile(Reference ref) async {
-//     final url = await ref.getDownloadURL();
 
-//     final dir = await getApplicationDocumentsDirectory();
-//     final file = ('${dir.path}/${ref.name}');
-//     await Dio().download(url, file);
-
-//     // await ref.writeToFile(file);
-
-//     if (url.contains('.jpg')) {
-//       await GallerySaver.saveImage(file, toDcim: true);
-//     }
-//   }
-// }
+    if (url.contains('.pdf')) {
+      await GallerySaver.saveImage(path, toDcim: true);
+    }
   }
 }
+

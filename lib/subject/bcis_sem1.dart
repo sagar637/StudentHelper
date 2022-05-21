@@ -19,7 +19,7 @@ class _BCISSEMIState extends State<BCISSEMI> {
         children: <Widget>[
           Card(
               child: ListTile(
-                  title: Text("Subject Name(Lekni)"),
+                  title: Text("Subject Name(Principle of mannagementm)"),
                   subtitle: Text("BCIS Study Materials"),
                   //leading:
                   //  CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),

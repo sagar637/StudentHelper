@@ -70,7 +70,7 @@ class _SemesterPDF extends State<SemesterPDF> {
           icon: Icon(
             Icons.file_download),
           onPressed: () async {
-          FirebaseApi.downloadFile(file.ref);
+              FirebaseApi.downloadFile(file.ref);
 
             final snackBar = SnackBar(
               content: Text('Downloaded ${file.name}'),
@@ -93,9 +93,9 @@ class _SemesterPDF extends State<SemesterPDF> {
             color: Colors.blue,
           ),
         ),
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => ImagePage(file: file),
-        )),
+        // onTap: () => Navigator.of(context).push(MaterialPageRoute(
+        //   builder: (context) => ImagePage(file: file),
+        // )),
       );
 
   Widget buildHeader(int length) => ListTile(
