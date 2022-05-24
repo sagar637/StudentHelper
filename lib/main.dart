@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:studenthelper/Courses/BCIS.dart';
 import 'package:studenthelper/Courses/bba_bi.dart';
 import 'package:studenthelper/Pdfdownload/sem1.dart';
@@ -9,9 +10,15 @@ import 'package:studenthelper/subjectfiles/semester_pdf.dart';
 
 import 'Home/index.dart';
 
+
+
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await FlutterDownloader.initialize(
+      debug: true // optional: set false to disable printing logs to console
+  );
   //await FirebaseAppCheck.instance.activate();
   runApp(const MyApp());
 }

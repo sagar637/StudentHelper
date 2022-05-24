@@ -1,15 +1,20 @@
 import 'dart:io';
+import 'dart:isolate';
+import 'dart:ui';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:gallery_saver/gallery_saver.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
-
+import 'package:flutter_downloader/flutter_downloader.dart';
 
 import '../Models/modeindex.dart';
 
+
+const debug = true;
+
 class FirebaseApi {
+
   static Future<List<String>> _getDownloadLinks(List<Reference> refs) =>
       Future.wait(refs.map((ref) => ref.getDownloadURL()).toList());
 
@@ -30,46 +35,37 @@ class FirebaseApi {
         .toList();
   }
 
-  // static Future downloadFile(Reference ref) async {
-
-    // final islandRef = ref.child("Semester1/");
-    //final url = await ref.getDownloadURL();
-    // final dir = await getApplicationDocumentsDirectory();
-    // final filePath = ('${dir.path}/${ref.name}');
-    // final file  = File(filePath);
-    // await Dio().download(url, file);
-
-
-    // final downloadTask = islandRef.writeToFile(file);
-    // downloadTask.snapshotEvents.listen((taskSnapshot) {
-    //   switch (taskSnapshot.state) {
-    //     case TaskState.running:
-    //       // TODO: Handle this case.
-    //       break;
-    //     case TaskState.paused:
-    //       // TODO: Handle this case.
-    //       break;
-    //     case TaskState.success:
-    //       // TODO: Handle this case.
-    //       break;
-    //     case TaskState.canceled:
-    //       // TODO: Handle this case.
-    //       break;
-    //     case TaskState.error:
-    //       // TODO: Handle this case.
-    //       break;
-    //   }
-    // });
-  static Future downloadFile(Reference ref) async {
-final url = await ref.getDownloadURL();
-final tempDir = await getTemporaryDirectory();
-final path = '${tempDir.path}/${ref.name}';
-await Dio().download(url, path).toString();
-
-
-    if (url.contains('.pdf')) {
-      await GallerySaver.saveImage(path, toDcim: true);
+  static void downloadCallback(
+      String id, DownloadTaskStatus status, int progress) {
+    if (debug) {
+      print(
+          'Background Isolate Callback: task ($id) is in status ($status) and process ($progress)');
     }
+    final SendPort send =
+        IsolateNameServer.lookupPortByName('downloader_send_port')!;
+    send.send([id, status, progress]);
   }
-}
 
+  static Future downloadFile(Reference ref) async {
+    final url = await ref.getDownloadURL();
+    final tempDir = await getTemporaryDirectory();
+    final path = '${tempDir.path}/${ref.name}';
+    print(tempDir.path);
+    //await Dio().download(url, path);
+
+
+    FlutterDownloader.registerCallback(downloadCallback);
+    final taskId = await FlutterDownloader.enqueue(
+      url: url,
+      savedDir: tempDir.path,
+      showNotification: true,
+      // show download progress in status bar (for Android)
+      openFileFromNotification: true,
+      // click on notification to open downloaded file (for Android)
+      saveInPublicStorage: true, //save files in local storage
+    );
+    return taskId;
+  }
+
+
+}

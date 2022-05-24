@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -69,13 +71,13 @@ class _SemesterPDF extends State<SemesterPDF> {
         trailing: IconButton(
           icon: Icon(
             Icons.file_download),
-          onPressed: () async {
+          onPressed: () {
               FirebaseApi.downloadFile(file.ref);
 
-            final snackBar = SnackBar(
-              content: Text('Downloaded ${file.name}'),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            // final snackBar = SnackBar(
+            //   content: Text('Downloaded ${file.name}'),
+            // );
+          //  ScaffoldMessenger.of(context).showSnackBar(snackBar);
           },
         ),
         //   child: Image.network(
