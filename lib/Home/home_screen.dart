@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+
 late User loggedinUser;
 
 class HomeScreen extends StatefulWidget {
@@ -31,23 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: null,
-        actions: <Widget>[
-          IconButton(
-              icon: const Icon(Icons.exit_to_app),
-              onPressed: () {
-                _auth.signOut();
-                Navigator.pop(context);
-
-                //Implement logout functionality
-              }),
-        ],
-        title: const Text('Home Page'),
-        backgroundColor: Colors.lightBlueAccent,
-      ),
-      body: ListView(
+    return ListView(
         padding: const EdgeInsets.all(8),
         children: <Widget>[
           Card(
@@ -84,8 +69,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   leading:
                       CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
                   trailing: Icon(Icons.arrow_forward)))
-        ],
-      ),
-    );
+        ],);
+
+
   }
 }
+
+
+

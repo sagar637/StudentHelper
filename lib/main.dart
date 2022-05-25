@@ -8,6 +8,7 @@ import 'package:studenthelper/Semester/bcis_sem.dart';
 import 'package:studenthelper/subject/bcis_sem1.dart';
 import 'package:studenthelper/subjectfiles/semester_pdf.dart';
 
+
 import 'Home/index.dart';
 
 
@@ -19,6 +20,7 @@ void main() async {
   await FlutterDownloader.initialize(
       debug: true // optional: set false to disable printing logs to console
   );
+
   //await FirebaseAppCheck.instance.activate();
   runApp(const MyApp());
 }
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner:false,
       initialRoute: 'welcome_screen',
       routes: {
         'welcome_screen': (context) => const WelcomeScreen(),
@@ -47,6 +50,9 @@ class MyApp extends StatelessWidget {
         //Subject Route
         'bcis_sem1': (context) => const BCISSEMI(),
         //'sem1': (context) =>   const ImagePage(file: ,),
+       'Home' : (Context) => const DashBoardPage(),
+        'dashboard' : (Context) => const DashBoardPage()
+
       },
     );
   }
