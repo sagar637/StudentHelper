@@ -22,3 +22,6 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(32.0)),
   ),
 );
+const blueColor = Color.fromRGBO(0, 149, 246, 1);
+const primaryColor = Colors.white;
+const secondaryColor = Colors.grey;
