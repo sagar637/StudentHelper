@@ -195,6 +195,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
     return Scaffold(
       body: PageView(
         children: homeScreenItems,
+
         controller: pageController,
         onPageChanged: onPageChanged,
       ),
@@ -206,7 +207,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               Icons.home,
               color: (_page == 0) ? primaryColor : secondaryColor,
             ),
-            label: '',
+            label: 'Notes',
             backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
@@ -214,29 +215,37 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
                 Icons.feed_outlined,
                 color: (_page == 1) ? primaryColor : secondaryColor,
               ),
-              label: '',
+              label: 'Feed',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.add_circle,
                 color: (_page == 2) ? primaryColor : secondaryColor,
               ),
-              label: 'Upload',
+              label: 'Ask Question',
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite,
+              Icons.search,
               color: (_page == 3) ? primaryColor : secondaryColor,
             ),
-            label: '',
+            label: 'Search',
+            backgroundColor: primaryColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notifications,
+              color: (_page == 4) ? primaryColor : secondaryColor,
+            ),
+            label: 'Notification',
             backgroundColor: primaryColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
-              color: (_page == 4) ? primaryColor : secondaryColor,
+              color: (_page == 5) ? primaryColor : secondaryColor,
             ),
-            label: '',
+            label: 'Profile',
             backgroundColor: primaryColor,
           ),
         ],

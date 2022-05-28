@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../Modelss/user.dart';
 import '../../Provider/user_provider.dart';
 import '../../Resources/firebase_method.dart';
 import '../../Utilis/utilis.dart';
@@ -62,9 +61,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
     );
   }
 
-
-
-  void  postImage(String uid, String username, String profImage) async {
+  void postImage(String uid, String username, String profImage) async  {
      setState(() {
       isLoading = true;
     });
@@ -114,93 +111,94 @@ class _AddPostScreenState extends State<AddPostScreen> {
   }
 
   @override
-Widget build(BuildContext context) {
-  final UserProvider userProvider = Provider.of<UserProvider>(context);
+  Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
 
-  return _file == null
-      ? Center(
-    child: IconButton(
-      icon: const Icon(
-        Icons.upload,
+    return _file == null
+        ? Center(
+
+      child: IconButton(
+        icon: const Icon(
+          Icons.upload,
+        ),
+        onPressed: () => _selectImage(context),
       ),
-      onPressed: () => _selectImage(context),
-    ),
-  )
-      : Scaffold(
-    appBar: AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: clearImage,
-      ),
-      title: const Text(
-        'Post to',
-      ),
-      centerTitle: false,
-      actions: <Widget>[
-        TextButton(
-          onPressed: () => postImage(
-            userProvider.getUser.uid,
-            userProvider.getUser.username,
-            userProvider.getUser.photoUrl,
-          ),
-          child: const Text(
-            "Post",
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0),
-          ),
-        )
-      ],
-    ),
-    // POST FORM
-    body: Column(
-      children: <Widget>[
-        isLoading
-            ? const LinearProgressIndicator()
-            : const Padding(padding: EdgeInsets.only(top: 0.0)),
-        const Divider(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            CircleAvatar(
-              backgroundImage: NetworkImage(
-               userProvider.getUser.photoUrl
-              ),
+    )
+        : Scaffold(
+      appBar: AppBar(
+
+       // backgroundColor: mobileBackgroundColor,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: clearImage,
+        ),
+        title: const Text(
+          'Post to',
+        ),
+        centerTitle: false,
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => postImage(
+              userProvider.getUser.uid,
+              userProvider.getUser.username,
+              userProvider.getUser.photoUrl,
             ),
-
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.3,
-              child: TextField(
-                controller: _descriptionController,
-                decoration: const InputDecoration(
-                    hintText: "Write a caption...",
-                    border: InputBorder.none),
-                maxLines: 8,
-              ),
+            child: const Text(
+              "Post",
+              style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0),
             ),
-            SizedBox(
-              height: 45.0,
-              width: 45.0,
-              child: AspectRatio(
-                aspectRatio: 487 / 451,
-                child: Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fill,
-                        alignment: FractionalOffset.topCenter,
-                        image: MemoryImage(_file!),
-
-                      )),
+          )
+        ],
+      ),
+      // POST FORM
+      body: Column(
+        children: <Widget>[
+          isLoading
+              ? const LinearProgressIndicator()
+              : const Padding(padding: EdgeInsets.only(top: 0.0)),
+          const Divider(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // CircleAvatar(
+              //   backgroundImage: NetworkImage(
+              //     userProvider.getUser.photoUrl,
+              //   ),
+              // ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.3,
+                child: TextField(
+                  controller: _descriptionController,
+                  decoration: const InputDecoration(
+                      hintText: "Your First Question",
+                      border: InputBorder.none),
+                  maxLines: 8,
                 ),
               ),
-            ),
-          ],
-        ),
-        const Divider(),
-      ],
-    ),
-  );
- }
+              SizedBox(
+                height: 45.0,
+                width: 45.0,
+                child: AspectRatio(
+                  aspectRatio: 487 / 451,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          alignment: FractionalOffset.topCenter,
+                          image: MemoryImage(_file!),
+                        )),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const Divider(),
+        ],
+      ),
+    );
+  }
 }

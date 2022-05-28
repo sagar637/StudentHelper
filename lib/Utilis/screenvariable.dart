@@ -10,11 +10,12 @@ import '../Community/search/search_screen.dart';
 const webScreenSize = 600;
 
 List<Widget> homeScreenItems = [
+
   HomeScreen(),
   const FeedScreen(),
+  const AddPostScreen(),
   const SearchScreen(),
-   const AddPostScreen(),
-  //const Text('notifications'),
+  const Text('notifications'),
   ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,
   ),

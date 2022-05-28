@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _auth = FirebaseAuth.instance;
 
+
   @override
   void initState() {
     super.initState();
@@ -32,44 +33,50 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-        padding: const EdgeInsets.all(8),
-        children: <Widget>[
-          Card(
-              child: ListTile(
-                  title: Text("BCIS"),
-                  subtitle: Text("BCIS Study Materials"),
-                  leading:
-                      CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-                  trailing: Icon(Icons.arrow_forward),
-                  onTap: () {
-                    Navigator.pushNamed(context, 'BCIS');
-                  })),
-          Card(
-              child: ListTile(
-                  title: Text("BBA"),
-                  subtitle: Text("BBA Study Materials"),
-                  leading:
-                      CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-                  trailing: Icon(Icons.arrow_forward))),
-          Card(
-              child: ListTile(
-            title: Text("BBA-BI"),
-            subtitle: Text("BBA-BI Study Materials"),
-            leading: CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-            trailing: Icon(Icons.arrow_forward),
-            // onTap: () {
-            //   Navigator.pushNamed(context, 'BBA_BI');
-            // }
-          )),
-          Card(
-              child: ListTile(
-                  title: Text("MBA"),
-                  subtitle: Text("MBA Study Materials"),
-                  leading:
-                      CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-                  trailing: Icon(Icons.arrow_forward)))
-        ],);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(" Online Student Helper"),
+        backgroundColor: Colors.black
+      ),
+      body: ListView(
+          padding: const EdgeInsets.all(8),
+          children: <Widget>[
+            Card(
+                child: ListTile(
+                    title: Text("BCIS"),
+                    subtitle: Text("BCIS Study Materials"),
+                    leading:
+                        CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+                    trailing: Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.pushNamed(context, 'BCIS');
+                    })),
+            Card(
+                child: ListTile(
+                    title: Text("BBA"),
+                    subtitle: Text("BBA Study Materials"),
+                    leading:
+                        CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+                    trailing: Icon(Icons.arrow_forward))),
+            Card(
+                child: ListTile(
+              title: Text("BBA-BI"),
+              subtitle: Text("BBA-BI Study Materials"),
+              leading: CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+              trailing: Icon(Icons.arrow_forward),
+              // onTap: () {
+              //   Navigator.pushNamed(context, 'BBA_BI');
+              // }
+            )),
+            Card(
+                child: ListTile(
+                    title: Text("MBA"),
+                    subtitle: Text("MBA Study Materials"),
+                    leading:
+                        CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+                    trailing: Icon(Icons.arrow_forward)))
+          ],),
+    );
 
 
   }

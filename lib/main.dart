@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           'welcome_screen': (context) => const WelcomeScreen(),
           'registration_screen': (context) => SignupScreen(),
           'login_screen': (context) => const LoginScreen(),
-          'home_screen': (context) => HomeScreen(),
+          //'home_screen': (context) => HomeScreen(),
           //Course Routes
           'BBA_BI': (context) => const BBABI(),
           'BCIS': (context) => const BCIS(),
@@ -71,8 +71,8 @@ class MyApp extends StatelessWidget {
           //Community Routes
           'feedmain': (context) => const FeedScreen(),
           'add_post_screen': (context) => const AddPostScreen(),
-          'comment_screen' : (context) => CommentsScreen(postId: null,),
-          //'profile_screen' : (Context) => ProfileScreen(uid : uid),
+          //'comment_screen' : (context) => CommentsScreen(postId: null,),
+          //'profile_screen' : (Context) => ProfileScreen(uid : null),
         },
         home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
