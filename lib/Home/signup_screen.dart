@@ -170,7 +170,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Container(),
                 flex: 2,
               ),
-              // SvgPicture.asset(
+              // SvgPicture.asset(  // add our project logo
               //   'assets/ic_instagram.svg',
               //   color: primaryColor,
               //   height: 64,
@@ -205,7 +205,7 @@ class _SignupScreenState extends State<SignupScreen> {
               const SizedBox(
                 height: 24,
               ),
-              TextFieldInput(
+              TextFieldInput(  // change UI
                 hintText: 'Enter your username',
                 textInputType: TextInputType.text,
                 textEditingController: _usernameController,
@@ -249,7 +249,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 12), // change UI button make it look more awsom
                   decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(4)),

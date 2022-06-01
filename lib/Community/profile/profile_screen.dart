@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:studenthelper/Home/home_screen.dart';
 
 import '../../Home/login_screen.dart';
 import '../../Resources/auth_methos.dart';
@@ -79,6 +80,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text(
           userData['username'],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.logout,
+              color: primaryColor,
+            ),
+            onPressed: () async {
+              await AuthMethods().signOut();
+              Navigator.of(context)
+                  .pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                    const LoginScreen(),
+                  ) );
+            }
+          ),
+        ],
         centerTitle: false,
       ),
       body: ListView(
@@ -117,18 +135,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               FirebaseAuth.instance.currentUser!.uid ==
                                   widget.uid
                                   ? FollowButton(
-                                text: 'Sign Out',
+                                text: 'Your Profile',
                                 // backgroundColor:
                                 // mobileBackgroundColor,
-                                textColor: primaryColor,
-                                borderColor: Colors.grey,
+                                textColor: Colors.blue,
+                                borderColor: Colors.red,
                                 function: () async {
                                   await AuthMethods().signOut();
                                   Navigator.of(context)
                                       .pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                      const LoginScreen(),
+                                         const LoginScreen( ),
                                     ),
                                   );
                                 },

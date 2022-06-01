@@ -13,24 +13,28 @@ class FeedScreen extends StatefulWidget {
   State<FeedScreen> createState() => _FeedScreenState();
 }
 
+
+
+
 class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+   // final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
 
 
-      appBar: width > webScreenSize
-          ? null
-          : AppBar(
+      // appBar: width > webScreenSize
+      //     ? null
+          appBar: AppBar(
         //backgroundColor: mobileBackgroundColor,
         centerTitle: false,
-        title: SvgPicture.asset(
-          'assets/ic_instagram.svg',
-          color: primaryColor,
-          height: 32,
-        ),
+        title: Text("Feed"), // add logo in this page at appBar
+        // title: SvgPicture.asset(
+        //   'assets/ic_instagram.svg',
+        //   color: primaryColor,
+        //   height: 32,
+        // ),
         actions: [
           IconButton(
             icon: const Icon(
@@ -59,7 +63,9 @@ class _FeedScreenState extends State<FeedScreen> {
               // ),
               child: PostCard(
                 snap: snapshot.data!.docs[index].data(),
+
               ),
+
             ),
           );
         },

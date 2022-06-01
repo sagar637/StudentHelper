@@ -10,26 +10,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _auth = FirebaseAuth.instance;
-
-
-  @override
-  void initState() {
-    super.initState();
-    getCurrentUser();
-  }
+  // final _auth = FirebaseAuth.instance;
+  //
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   getCurrentUser();
+  // }
 
   //using this function you can use the credentials of the user
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser;
-      if (user != null) {
-        loggedinUser = user;
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
+  // void getCurrentUser() async {
+  //   try {
+  //     final user = await _auth.currentUser;
+  //     if (user != null) {
+  //       loggedinUser = user;
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

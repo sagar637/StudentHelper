@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../Modelss/user.dart';
 import '../../Provider/user_provider.dart';
+import '../../Resources/auth_methos.dart';
 import '../../Resources/firebase_method.dart';
 import '../../Utilis/utilis.dart';
 import '../../Widgets/comment_card.dart';
@@ -20,6 +21,19 @@ class CommentsScreen extends StatefulWidget {
 class _CommentsScreenState extends State<CommentsScreen> {
   final TextEditingController commentEditingController =
   TextEditingController();
+  User? user;
+@override
+  void initState() {
+    super.initState();
+    commentDisplay();
+  }
+
+  commentDisplay() async {
+    User _user = await AuthMethods().getUserDetails();
+    setState(() {
+      user = _user;
+    });
+  }
 
   void postComment(String uid, String name, String profilePic) async {
     try {
@@ -47,16 +61,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final User user = Provider.of<UserProvider>(context).getUser;
+    //final User? user = Provider.of<UserProvider>(context).getUser as User?;
 
     return Scaffold(
-      // appBar: AppBar(
+      appBar: AppBar(
       //   backgroundColor: mobileBackgroundColor,
-      //   title: const Text(
-      //     'Comments',
-      //   ),
-      //   centerTitle: false,
-      // ),
+       title: const Text(
+          'Comments',
+        ),
+        centerTitle: false,
+      ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('posts')
@@ -89,7 +103,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
           child: Row(
             children: [
               CircleAvatar(
-                backgroundImage: NetworkImage(user.photoUrl),
+                backgroundImage: NetworkImage(user!.photoUrl),
                 radius: 18,
               ),
               Expanded(
@@ -98,7 +112,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   child: TextField(
                     controller: commentEditingController,
                     decoration: InputDecoration(
-                      hintText: 'Comment as ${user.username}',
+                      hintText: 'Comment as ${user!.username}',
                       border: InputBorder.none,
                     ),
                   ),
@@ -106,9 +120,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
               ),
               InkWell(
                 onTap: () => postComment(
-                  user.uid,
-                  user.username,
-                  user.photoUrl,
+                  user!.uid,
+                  user!.username,
+                  user!.photoUrl,
                 ),
                 child: Container(
                   padding:

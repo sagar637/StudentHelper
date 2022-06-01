@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../Api/firebase_api.dart';
 import '../Models/firebase_file.dart';
-import '../Pdfdownload/sem1.dart';
+
 
 class SemesterPDF extends StatefulWidget {
   const SemesterPDF({Key? key}) : super(key: key);

@@ -9,7 +9,6 @@ import 'package:studenthelper/Community/profile/profile_screen.dart';
 import 'package:studenthelper/Courses/BCIS.dart';
 import 'package:studenthelper/Courses/bba_bi.dart';
 import 'package:studenthelper/Modelss/user.dart';
-import 'package:studenthelper/Pdfdownload/sem1.dart';
 import 'package:studenthelper/Semester/bcis_sem.dart';
 import 'package:studenthelper/subject/bcis_sem1.dart';
 import 'package:studenthelper/subjectfiles/semester_pdf.dart';

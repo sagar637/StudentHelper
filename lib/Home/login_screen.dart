@@ -179,15 +179,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Container(),
                 flex: 2,
               ),
-              SvgPicture.asset(
-                'assets/ic_instagram.svg',
-                color: primaryColor,
-                height: 64,
-              ),
+              // SvgPicture.asset(  // Add logo of our app
+              //   'assets/ic_instagram.svg',
+              //   color: primaryColor,
+              //   height: 64,
+              // ),
               const SizedBox(
                 height: 64,
               ),
-              TextFieldInput(
+              TextFieldInput(  //create a new user interface but dont change the code
                 hintText: 'Enter your email',
                 textInputType: TextInputType.emailAddress,
                 textEditingController: _emailController,
@@ -215,7 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 12), // change login button UI
                   decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(4)),
@@ -248,8 +248,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     child: Container(
-                      child: const Text(
-                        ' Signup.',
+                      child: const Text(  // Create Forget password page and do it with firebase authorization
+                        ' Signup.',   // Get email veriication using firebase
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

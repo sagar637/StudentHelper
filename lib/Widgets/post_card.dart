@@ -5,7 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:studenthelper/Modelss/user.dart' as model;
 
 import '../Community/AskQuestion/comment_screen.dart';
+import '../Modelss/user.dart';
 import '../Provider/user_provider.dart';
+import '../Resources/auth_methos.dart';
 import '../Resources/firebase_method.dart';
 import '../Utilis/utilis.dart';
 import '../constanst/constants.dart';
@@ -25,13 +27,21 @@ class PostCard extends StatefulWidget {
 class _PostCardState extends State<PostCard> {
   int commentLen = 0;
   bool isLikeAnimating = false;
+  User? user;
 
   @override
   void initState() {
     super.initState();
     fetchCommentLen();
+    postUserDispay();
   }
 
+ postUserDispay() async {
+   User _user = await AuthMethods().getUserDetails();
+   setState(() {
+     user = _user;
+   });
+ }
   fetchCommentLen() async {
     try {
       QuerySnapshot snap = await FirebaseFirestore.instance
@@ -62,8 +72,8 @@ class _PostCardState extends State<PostCard> {
 
   @override
   Widget build(BuildContext context) {
-    final model.User user = Provider.of<UserProvider>(context).getUser;
-   final width = MediaQuery.of(context).size.width;
+   // User? user = Provider.of<UserProvider>(context).getUser as model.User?;
+    //final width = MediaQuery.of(context).size.width;
 
     return Container(
       // boundary needed for web
@@ -111,7 +121,8 @@ class _PostCardState extends State<PostCard> {
                     ),
                   ),
                 ),
-                widget.snap['uid'].toString() == user.uid
+                widget.snap['uid'].toString() == user?.uid
+
                     ? IconButton(
                   onPressed: () {
                     showDialog(
@@ -160,7 +171,7 @@ class _PostCardState extends State<PostCard> {
             onDoubleTap: () {
               FireStoreMethods().likePost(
                 widget.snap['postId'].toString(),
-                user.uid,
+                user!.uid,
                 widget.snap['likes'],
               );
               setState(() {
@@ -205,10 +216,10 @@ class _PostCardState extends State<PostCard> {
           Row(
             children: <Widget>[
               LikeAnimation(
-                isAnimating: widget.snap['likes'].contains(user.uid),
+                isAnimating: widget.snap['likes'].contains(user?.uid),
                 smallLike: true,
                 child: IconButton(
-                  icon: widget.snap['likes'].contains(user.uid)
+                  icon: widget.snap['likes'].contains(user?.uid)
                       ? const Icon(
                     Icons.favorite,
                     color: Colors.red,
@@ -218,7 +229,7 @@ class _PostCardState extends State<PostCard> {
                   ),
                   onPressed: () => FireStoreMethods().likePost(
                     widget.snap['postId'].toString(),
-                    user.uid,
+                    user!.uid,
                     widget.snap['likes'],
                   ),
                 ),
@@ -271,7 +282,7 @@ class _PostCardState extends State<PostCard> {
                   ),
                   child: RichText(
                     text: TextSpan(
-                      style: const TextStyle(color: primaryColor),
+                      style: const TextStyle(color: Colors.black),
                       children: [
                         TextSpan(
                           text: widget.snap['username'].toString(),
@@ -292,7 +303,7 @@ class _PostCardState extends State<PostCard> {
                       'View all $commentLen comments',
                       style: const TextStyle(
                         fontSize: 16,
-                        color: secondaryColor,
+                        color: Colors.red,
                       ),
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 4),
@@ -310,7 +321,7 @@ class _PostCardState extends State<PostCard> {
                     DateFormat.yMMMd()
                         .format(widget.snap['datePublished'].toDate()),
                     style: const TextStyle(
-                      color: secondaryColor,
+                      color: Colors.red,
                     ),
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 4),
