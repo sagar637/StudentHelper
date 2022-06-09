@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:studenthelper/Community/chat/chat.dart';
 
 import '../../Utilis/screenvariable.dart';
 import '../../Widgets/post_card.dart';
@@ -22,13 +23,12 @@ class _FeedScreenState extends State<FeedScreen> {
    // final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-
-
       // appBar: width > webScreenSize
       //     ? null
           appBar: AppBar(
+            automaticallyImplyLeading: false,
         //backgroundColor: mobileBackgroundColor,
-        centerTitle: false,
+        centerTitle: true,
         title: Text("Feed"), // add logo in this page at appBar
         // title: SvgPicture.asset(
         //   'assets/ic_instagram.svg',
@@ -41,7 +41,9 @@ class _FeedScreenState extends State<FeedScreen> {
               Icons.messenger_outline,
               color: primaryColor,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'chat');
+            },
           ),
         ],
       ),

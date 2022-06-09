@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:studenthelper/constanst/constantindex.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  static String id = 'welcome';
   const WelcomeScreen({Key? key}) : super(key: key);
 
   @override

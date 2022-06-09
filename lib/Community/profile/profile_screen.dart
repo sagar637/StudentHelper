@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:studenthelper/Home/home_screen.dart';
-
 import '../../Home/login_screen.dart';
 import '../../Resources/auth_methos.dart';
 import '../../Resources/firebase_method.dart';
@@ -76,6 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     )
         : Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
        // backgroundColor: mobileBackgroundColor,
         title: Text(
           userData['username'],
@@ -248,7 +248,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   DocumentSnapshot snap =
                   (snapshot.data! as dynamic).docs[index];
 
-                  return Container(
+                  return  Container(
                     child: Image(
                       image: NetworkImage(snap['postUrl']),
                       fit: BoxFit.cover,

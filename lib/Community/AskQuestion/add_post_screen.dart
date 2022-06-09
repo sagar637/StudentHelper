@@ -42,7 +42,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       context: parentContext,
       builder: (BuildContext context) {
         return SimpleDialog(
-          title: const Text('Create a Post'),
+          title: const Text('Ask your Question'),
           children: <Widget>[
             SimpleDialogOption(
                 padding: const EdgeInsets.all(20),
@@ -149,11 +149,14 @@ class _AddPostScreenState extends State<AddPostScreen> {
           ))
         : _file == null
             ? Center(
+
                 child: IconButton(
                   icon: const Icon(Icons.upload),
                   onPressed: () => _selectImage(context),
+
                 ),
               )
+
             : Scaffold(
                 appBar: AppBar(
                   // backgroundColor: mobileBackgroundColor,

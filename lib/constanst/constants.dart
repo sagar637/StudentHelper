@@ -25,3 +25,15 @@ const kTextFieldDecoration = InputDecoration(
 const blueColor = Color.fromRGBO(0, 149, 246, 1);
 const primaryColor = Colors.white;
 const secondaryColor = Colors.grey;
+const kSendButtonTextStyle = TextStyle(
+  color: Colors.lightBlueAccent,
+  fontWeight: FontWeight.bold,
+  fontSize: 18.0,
+);
+
+const kMessageTextFieldDecoration = InputDecoration(
+  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+  hintText: 'Type your message here...',
+  border: InputBorder.none,
+);
+
