@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:studenthelper/subjectfiles/semester_pdf.dart';
+import '../NotesDownload/semester_pdf.dart';
 
-class Subjectes extends StatefulWidget {  //Subject Names ko page
+class Subjectes extends StatefulWidget {   //Subject Names ko page
   final snap;
   const Subjectes({Key? key, this.snap}) : super(key: key);
 
@@ -13,6 +13,12 @@ class _SubjectesState extends State<Subjectes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            title: Text(" Digital Notes"),
+            backgroundColor: Colors.black
+        ),
         body: ListView.builder(
             itemCount: widget.snap!.length,
             itemBuilder: (ctx, index) => Container(

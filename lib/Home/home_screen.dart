@@ -24,17 +24,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
           automaticallyImplyLeading: false,
         centerTitle: true,
-        title: Text(" Online Student Helper"),
+        title: Text(" Digital Notes"),
         backgroundColor: Colors.black
       ),
-      body:
-      StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('notes').snapshots(),
 
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('notes').snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

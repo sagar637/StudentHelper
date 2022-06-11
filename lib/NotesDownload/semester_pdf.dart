@@ -26,12 +26,14 @@ class _SemesterPDF extends State<SemesterPDF> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Text("Notes"),
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
-        ),
+          title: Text(" Digital Notes "),
+          backgroundColor: Colors.black
+      ),
         body: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       buildHeader(widget.snap!.length),
                       const SizedBox(height: 12),
@@ -41,7 +43,6 @@ class _SemesterPDF extends State<SemesterPDF> {
                           itemCount: widget.snap!.length,
                           itemBuilder: (context, index) {
                             final file = widget.snap[index]['file'];
-
                             return ListTile(
                               trailing: IconButton(
                                 icon: Icon(Icons.file_download),

@@ -1,1 +1,1 @@
-export 'bcis_sem1.dart';
+export 'subjectnamepage.dart';

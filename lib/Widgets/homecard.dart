@@ -1,10 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:studenthelper/Courses/course.dart';
 
-import '../Modelss/user.dart';
-import '../Resources/auth_methos.dart';
-import '../Utilis/utilis.dart';
+
+import '../SemesterName/semester.dart';
 
 class Homecard extends StatefulWidget {
   final snap;
@@ -24,13 +21,13 @@ class _HomecardState extends State<Homecard> {
               subtitle: Text(widget.snap['course'] + " Study Materials"),
               leading: CircleAvatar(
                   backgroundImage: NetworkImage(widget.snap['image'])),
-              trailing: Icon(Icons.arrow_forward),
+              // trailing: Icon(Icons.arrow_forward),
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            Course(snap: widget.snap['semester'],)));
+                            Semester(snap: widget.snap['semester'],)));
 
                 // Navigator.push(context, MaterialPageRoute(builder: () => Course(snap:widget.snap['semester'])))
               })),
