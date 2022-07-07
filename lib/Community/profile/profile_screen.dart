@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:studenthelper/Community/Feed/feedmain.dart';
 import 'package:studenthelper/Home/home_screen.dart';
 import '../../Home/login_screen.dart';
 import '../../Resources/auth_methos.dart';
@@ -233,7 +234,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: CircularProgressIndicator(),
                 );
               }
-
               return GridView.builder(
                 shrinkWrap: true,
                 itemCount: (snapshot.data! as dynamic).docs.length,
@@ -247,12 +247,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 itemBuilder: (context, index) {
                   DocumentSnapshot snap =
                   (snapshot.data! as dynamic).docs[index];
-
                   return  Container(
-                    child: Image(
-                      image: NetworkImage(snap['postUrl']),
-                      fit: BoxFit.cover,
-                    ),
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => FeedScreen()));
+                        },
+                        child: Image( image: NetworkImage(snap['postUrl']),
+                            fit: BoxFit.cover)),
+                    // child: Image(
+                    //   image: NetworkImage(snap['postUrl']),
+                    //   fit: BoxFit.cover,
+                    // ),
                   );
                 },
               );

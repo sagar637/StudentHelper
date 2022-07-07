@@ -114,6 +114,7 @@ import '../Utilis/utilis.dart';
 import '../Widgets/text_field_input.dart';
 import '../constanst/constants.dart';
 import 'dashboard.dart';
+import 'forgetpassword.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -251,6 +252,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       child: const Text(  // Create Forget password page and do it with firebase authorization
                         ' Signup.',   // Get email veriication using firebase
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ResetPasswordScreen(),
+                      ),
+                    ),
+                    child: Container(
+                      child: const Text(  // Create Forget password page and do it with firebase authorization
+                        ' forgetpassword.',   // Get email veriication using firebase
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

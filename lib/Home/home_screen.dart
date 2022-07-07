@@ -30,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(" Digital Notes"),
         backgroundColor: Colors.black
       ),
-
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('notes').snapshots(),
         builder: (context,
@@ -39,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
             return const Center(
               child: CircularProgressIndicator(),
             );
-
           }
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
