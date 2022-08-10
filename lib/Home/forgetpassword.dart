@@ -40,9 +40,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     onPressed: (){
                       auth.sendPasswordResetEmail(email: _email!);
                       Navigator.of(context).pop();
-
                     }),
-
               ])
         ],),
     );

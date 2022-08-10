@@ -15,8 +15,6 @@ class FeedScreen extends StatefulWidget {
 }
 
 
-
-
 class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
@@ -65,7 +63,6 @@ class _FeedScreenState extends State<FeedScreen> {
               // ),
               child: PostCard(
                 snap: snapshot.data!.docs[index].data(),
-
               ),
 
             ),
