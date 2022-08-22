@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:studenthelper/Community/AskQuestion/add_post_screen.dart';
 import 'package:studenthelper/Community/Feed/feedmain.dart';
 import 'package:studenthelper/Community/chat/chat.dart';
+import 'package:studenthelper/Home/getting_started.dart';
+import 'package:studenthelper/Home/seasomuipage/slogin.dart';
 
 import 'package:studenthelper/subject/subjectnamepage.dart';
 import 'Home/index.dart';
@@ -39,12 +41,14 @@ class MyApp extends StatelessWidget {
 
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'welcome_screen',
+        initialRoute: 'getting_started',
 
         routes: {
+          'getting_started' : (context) => GettingStarted(),
           'welcome_screen': (context) => const WelcomeScreen(),
           'registration_screen': (context) => SignupScreen(),
           'login_screen': (context) => const LoginScreen(),
+          
           //'home_screen': (context) => HomeScreen(),
           //Course Routes
           //'BBA_BI': (context) => const BBABI(),

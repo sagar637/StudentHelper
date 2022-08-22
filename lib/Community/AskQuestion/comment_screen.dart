@@ -70,6 +70,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
           'Comments',
         ),
         centerTitle: false,
+        backgroundColor: Color.fromRGBO(143, 148, 251, 2),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance

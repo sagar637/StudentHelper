@@ -57,7 +57,7 @@ class _NotifactionState extends State<Notifaction> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text(" Digital "),
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(143, 148, 251, 2),
         ),
         body:
         StreamBuilder(

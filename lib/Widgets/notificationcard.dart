@@ -52,6 +52,9 @@ class _NotificationCardState extends State<NotificationCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
+        elevation: 50,
+        shadowColor: Colors.black,
+        // color: Colors.greenAccent[100],
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(

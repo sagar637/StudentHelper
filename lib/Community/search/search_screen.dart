@@ -22,6 +22,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: Color.fromRGBO(143, 148, 251, 2),
         //backgroundColor: mobileBackgroundColor,
         title: Form(
           child: TextFormField(
