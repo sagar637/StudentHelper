@@ -68,7 +68,6 @@ class _SemesterPDF extends State<SemesterPDF> {
                                      String savePath = dir.path + "/$savename"+ getFileExtension;
                                      print(savePath);
                                      //output:  /storage/emulated/0/Download/banner.png
-
                                      try {
                                        Dio().download(
                                            file,
@@ -86,8 +85,6 @@ class _SemesterPDF extends State<SemesterPDF> {
                                      } on DioError catch (e) {
                                        print(e.message);
                                      }
-
-
                                      final snackBar = SnackBar(
                                        content: Text('Downloaded ${widget
                                            .snap[index]['name']}'),

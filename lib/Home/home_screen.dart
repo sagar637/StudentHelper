@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(" Digital Notes"),
         backgroundColor: Color.fromRGBO(143, 148, 251, 2),
       ),
+<<<<<<< HEAD
 
       body: Padding(
         padding: const EdgeInsets.all(17.0),
@@ -39,6 +40,27 @@ class _HomeScreenState extends State<HomeScreen> {
           children: <Widget> [
           Container(
 
+=======
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('notes').snapshots(),
+        builder: (context,
+            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (ctx, index) => Container(
+              // margin: EdgeInsets.symmetric(
+              //   horizontal: width > webScreenSize ? width * 0.3 : 0,
+              //   vertical: width > webScreenSize ? 15 : 0,
+              // ),
+             child:
+              Homecard(
+                snap: snapshot.data!.docs[index].data(),
+>>>>>>> 39e61a9076c569b15514ad3d7393a9f2d529c545
 
           height: 300,
           // decoration: BoxDecoration(

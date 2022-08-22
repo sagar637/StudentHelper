@@ -77,7 +77,7 @@ class _NotifactionState extends State<Notifaction> {
                 child:
 
                 NotificationCard(
-                  snap: snapshot.data!.docs[index].data(),
+                  snap: snapshot.data!.docs[index].data(), uid: 'snapshot.data!.docs[index].data()',
 
                 ),
 
@@ -88,3 +88,4 @@ class _NotifactionState extends State<Notifaction> {
     );
   }
 }
+

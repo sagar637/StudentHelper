@@ -77,6 +77,31 @@ class _PostCardState extends State<PostCard> {
 
     return Container(
       // boundary needed for web
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        border: Border.all(
+         color: Colors.white,
+          width: 10.0,
+          style: BorderStyle.solid,
+        ),
+        //borderRadius: const BorderRadius.all(Radius.circular(40.0)),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black54,
+            blurRadius: 20.0,
+            spreadRadius: 20.0,
+          ),
+        ],
+        gradient: const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Colors.white,
+            Colors.white,
+          ],
+        ),
+      ),
+
       // decoration: BoxDecoration(
       //   border: Border.all(
       //     color: width > webScreenSize ? secondaryColor : mobileBackgroundColor,
@@ -84,7 +109,7 @@ class _PostCardState extends State<PostCard> {
       //   color: mobileBackgroundColor,
       // ),
       padding: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 15,
       ),
       child: Column(
         children: [
@@ -97,7 +122,7 @@ class _PostCardState extends State<PostCard> {
             child: Row(
               children: <Widget>[
                 CircleAvatar(
-                  radius: 16,
+                  radius: 20,
                   backgroundImage: NetworkImage(
                     widget.snap['profImage'].toString(),
                   ),
@@ -111,16 +136,36 @@ class _PostCardState extends State<PostCard> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            widget.snap['username'].toString(),
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+
+                        ),
                         Text(
-                          widget.snap['username'].toString(),
+                          ' Asked : ${ DateFormat.yMMMd()
+                              .format(widget.snap['datePublished'].toDate())}',
                           style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
+                // Text(
+                //   ' Asked In : ${ DateFormat.yMMMd()
+                //       .format(widget.snap['datePublished'].toDate())}',
+                //
+                //   style: const TextStyle(
+                //     color: Colors.red,
+                //   ),
+                // ),
                 widget.snap['uid'].toString() == user?.uid
 
                     ? IconButton(
@@ -162,10 +207,30 @@ class _PostCardState extends State<PostCard> {
                   },
                   icon: const Icon(Icons.more_vert),
                 )
-                    : Container(),
+                    : Container(
+                ),
+
+              ],
+
+            ),
+
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  widget.snap['description'],
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
           ),
+
           // IMAGE SECTION OF THE POST
           GestureDetector(
             onDoubleTap: () {
@@ -189,6 +254,7 @@ class _PostCardState extends State<PostCard> {
                     fit: BoxFit.cover,
                   ),
                 ),
+
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 200),
                   opacity: isLikeAnimating ? 1 : 0,
@@ -213,94 +279,85 @@ class _PostCardState extends State<PostCard> {
             ),
           ),
           // LIKE, COMMENT SECTION OF THE POST
-          Row(
-            children: <Widget>[
-              LikeAnimation(
-                isAnimating: widget.snap['likes'].contains(user?.uid),
-                smallLike: true,
-                child: IconButton(
-                  icon: widget.snap['likes'].contains(user?.uid)
-                      ? const Icon(
-                    Icons.favorite,
-                    color: Colors.red,
-                  )
-                      : const Icon(
-                    Icons.favorite_border,
-                  ),
-                  onPressed: () => FireStoreMethods().likePost(
-                    widget.snap['postId'].toString(),
-                    user!.uid,
-                    widget.snap['likes'],
-                  ),
-                ),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: Colors.grey,
+                width: 1.5,
               ),
-              IconButton(
-                icon: const Icon(
-                  Icons.comment_outlined,
-                ),
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => CommentsScreen(
-                      postId: widget.snap['postId'].toString(),
+            ),
+            child: Row(
+
+              children: <Widget>[
+                LikeAnimation(
+                  isAnimating: widget.snap['likes'].contains(user?.uid),
+                  smallLike: true,
+                  child: IconButton(
+                    icon: widget.snap['likes'].contains(user?.uid)
+                        ? const Icon(
+                      Icons.thumb_up_rounded,
+                      color: Colors.red,
+                    )
+                        : const Icon(
+                      Icons.thumb_up_outlined,
+                    ),
+
+                    onPressed: () => FireStoreMethods().likePost(
+                      widget.snap['postId'].toString(),
+                      user!.uid,
+                      widget.snap['likes'],
                     ),
                   ),
                 ),
-              ),
-              IconButton(
+    Text(
+    '${widget.snap['likes'].length} likes',
+    style: Theme.of(context).textTheme.bodyText2,
+    ),
+                IconButton(
                   icon: const Icon(
-                    Icons.send,
+                    Icons.mode_comment_sharp,
                   ),
-                  onPressed: () {}),
-              Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: IconButton(
-                        icon: const Icon(Icons.bookmark_border), onPressed: () {}),
-                  ))
-            ],
-          ),
-          //DESCRIPTION AND NUMBER OF COMMENTS
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                DefaultTextStyle(
-                    style: Theme.of(context)
-                        .textTheme
-                        .subtitle2!
-                        .copyWith(fontWeight: FontWeight.w800),
-                    child: Text(
-                      '${widget.snap['likes'].length} likes',
-                      style: Theme.of(context).textTheme.bodyText2,
-                    )),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.only(
-                    top: 8,
+
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => CommentsScreen(
+                        postId: widget.snap['postId'].toString(),
+                      ),
+                    ),
                   ),
-                  child: RichText(
-                    text: TextSpan(
-                      style: const TextStyle(color: Colors.black),
-                      children: [
-                        TextSpan(
-                          text: widget.snap['username'].toString(),
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                ),
+                Text(
+                  ' $commentLen Answer',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.red,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      IconButton(
+                          icon: const Icon(
+                            Icons.comment_bank_outlined,
+                          ),
+                        onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => CommentsScreen(
+                              postId: widget.snap['postId'].toString(),
+                            ),
                           ),
                         ),
-                        TextSpan(
-                          text: ' ${widget.snap['description']}',
-                        ),
-                      ],
-                    ),
+                          ),
+                    ],
                   ),
                 ),
                 InkWell(
                   child: Container(
                     child: Text(
-                      'View all $commentLen comments',
+                      'Submit Answer',
                       style: const TextStyle(
                         fontSize: 16,
                         color: Colors.red,
@@ -316,22 +373,96 @@ class _PostCardState extends State<PostCard> {
                     ),
                   ),
                 ),
-                Container(
-                  child: Text(
-                    DateFormat.yMMMd()
-                        .format(widget.snap['datePublished'].toDate()),
-                    style: const TextStyle(
-                      color: Colors.red,
-                    ),
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                ),
+                // Text(
+                //   'Submit Answer',
+                //   style: const TextStyle(
+                //     fontSize: 16,
+                //     color: Colors.red,
+                //   ),
+                // ),
+                // Expanded(
+                //     child: Align(
+                //       alignment: Alignment.bottomRight,
+                //       child: IconButton(
+                //           icon: const Icon(Icons.bookmark_border), onPressed: () {}),
+                //     ))
               ],
             ),
-          )
+          ),
+          //DESCRIPTION AND NUMBER OF COMMENTS
+          // Container(
+          //   padding: const EdgeInsets.symmetric(horizontal: 16),
+          //   child: Column(
+          //     mainAxisSize: MainAxisSize.min,
+          //     crossAxisAlignment: CrossAxisAlignment.start,
+          //     children: <Widget>[
+          //       // DefaultTextStyle(
+          //       //     style: Theme.of(context)
+          //       //         .textTheme
+          //       //         .subtitle2!
+          //       //         .copyWith(fontWeight: FontWeight.w800),
+          //           // child: Text(
+          //           //   '${widget.snap['likes'].length} likes',
+          //           //   style: Theme.of(context).textTheme.bodyText2,
+          //           // )),
+          //       Container(
+          //         width: double.infinity,
+          //         padding: const EdgeInsets.only(
+          //           top: 8,
+          //         ),
+          //         child: RichText(
+          //           text: TextSpan(
+          //             style: const TextStyle(color: Colors.black),
+          //             children: [
+          //               TextSpan(
+          //                 text: widget.snap['username'].toString(),
+          //                 style: const TextStyle(
+          //                   fontWeight: FontWeight.bold,
+          //                 ),
+          //               ),
+          //               TextSpan(
+          //                 text: ' ${widget.snap['description']}',
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       ),
+          //       InkWell(
+          //         child: Container(
+          //           child: Text(
+          //             'View all $commentLen comments',
+          //             style: const TextStyle(
+          //               fontSize: 16,
+          //               color: Colors.red,
+          //             ),
+          //           ),
+          //           padding: const EdgeInsets.symmetric(vertical: 4),
+          //         ),
+          //         onTap: () => Navigator.of(context).push(
+          //           MaterialPageRoute(
+          //             builder: (context) => CommentsScreen(
+          //               postId: widget.snap['postId'].toString(),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //       Container(
+          //         child: Text(
+          //           DateFormat.yMMMd()
+          //               .format(widget.snap['datePublished'].toDate()),
+          //           style: const TextStyle(
+          //             color: Colors.red,
+          //           ),
+          //         ),
+          //         padding: const EdgeInsets.symmetric(vertical: 4),
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );
+
   }
 }
 

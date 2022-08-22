@@ -37,7 +37,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
     });
   }
 
+
   _selectImage(BuildContext parentContext) async {
+
     return showDialog(
       context: parentContext,
       builder: (BuildContext context) {
@@ -148,13 +150,78 @@ class _AddPostScreenState extends State<AddPostScreen> {
             color: Colors.black,
           ))
         : _file == null
-            ? Center(
+            ?
+             Center(
+              child :  SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 100, 20, 5),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                     children:  [
+                       Image.asset(
+                         'assets/images/ask.jpg',
+                         height: 200,
+                         width: 200,
+                       ),
+                       Text(
+                         'Hey, Do you have a problem? ',
+                         style: TextStyle(
+                             fontSize: 45,
+                             color: Colors.green,
+                             decoration: TextDecoration.underline,
+                             decorationStyle: TextDecorationStyle.dashed,
+                             decorationColor: Colors.orange,
+                             decorationThickness: 3),
+                       ),
+                       SizedBox(
+                         height: 100,
+                       ),
 
-                child: IconButton(
-                  icon: const Icon(Icons.upload),
-                  onPressed: () => _selectImage(context),
+                       Text(
+                         'Ask Your Friends ',
+                         style: TextStyle(
+                           fontSize: 45,
+                           color: Colors.purple,
+                           decoration: TextDecoration.underline,
+                           decorationStyle: TextDecorationStyle.dashed,
+                           decorationThickness: 2,
+                           decorationColor: Colors.red,
+                         ),
+                       ),
+                       Padding(
+                         padding: const EdgeInsets.fromLTRB(10, 100, 20, 5),
+                         child: TextButton(
+                           child: Text('Ask Here'),
+                           style: TextButton.styleFrom(
+                             primary: Colors.white,
+                             backgroundColor: Colors.teal,
+                             onSurface: Colors.grey,
+                           ),
+                               onPressed: () => _selectImage(context),
 
+                         ),
+                       )
+                     ],
+                   ),
                 ),
+              ),
+               //  child: Row(
+               //    mainAxisAlignment: MainAxisAlignment.center,
+               //    children: [
+               //      // IconButton(
+               //      //   icon: const Icon(Icons.upload),
+               //      //   onPressed: () => _selectImage(context),
+               //      // ),
+               //      Text("Hey Do you have a Problem? you ask Your friend"),
+               //      SizedBox(width: 5,),
+               // IconButton(
+               //   icon: const Icon(Icons.upload),
+               //   onPressed: () => _selectImage(context),
+               // ),
+               //    ],
+               //
+               //  ),
+
               )
 
             : Scaffold(
@@ -176,9 +243,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         user!.photoUrl,
                       ),
                       child: const Text(
-                        "Post",
+                        "Ask",
                         style: TextStyle(
-                            color: Colors.red,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 16.0),
                       ),
