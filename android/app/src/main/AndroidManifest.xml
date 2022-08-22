@@ -2,7 +2,7 @@
     package="com.example.studenthelper">
    <application
 
-        android:label="studenthelper"
+        android:label="Digital Notes"
         android:name="${applicationName}"
        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">

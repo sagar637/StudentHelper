@@ -218,19 +218,22 @@ class _PostCardState extends State<PostCard> {
 
           Padding(
             padding: const EdgeInsets.all(12.0),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  widget.snap['description'],
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      widget.snap['description'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
-
           // IMAGE SECTION OF THE POST
           GestureDetector(
             onDoubleTap: () {

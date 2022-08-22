@@ -226,6 +226,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
             : Scaffold(
                 appBar: AppBar(
+                  backgroundColor: Color.fromRGBO(143, 148, 251, 2),
                   // backgroundColor: mobileBackgroundColor,
                   leading: IconButton(
                     icon: const Icon(Icons.arrow_back),

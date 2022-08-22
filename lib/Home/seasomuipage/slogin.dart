@@ -156,7 +156,7 @@ class _SloginState extends State<Slogin> {
                             //
                             //
                             // ),
-                            hintText: "Email or Gmail account",
+                            hintText: "Enter your email",
                             textInputType: TextInputType.emailAddress,
                             textEditingController: _emailController,
                           ),

@@ -74,7 +74,7 @@ class _GettingStartedState extends State<GettingStarted> {
                       margin: EdgeInsets.only(top: 100),
                       child: Center(
                         child: Text(
-                          "Digital Notes",
+                          "Welcome To ",
                           style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
                       ),
                     ),
@@ -83,17 +83,35 @@ class _GettingStartedState extends State<GettingStarted> {
                 ],
               ),
             ),
+
             //   Container(
             //   child: Text('Get your college notes digitally', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold) ,),
             // ),
-            Container(
-                child: Image.asset('assets/images/notes_logo.png', width: 100, height: 100,),
-              ),
+            // Container(
+            //
+            //     child: CircleAvatar(
+            //       radius: 90,
+            //       backgroundImage: NetworkImage(
+            //         "https://firebasestorage.googleapis.com/v0/b/student-helper-ca22a.appspot.com/o/Semester1%2FLogo%2F5c04d8cc64ff4c2b931f98aaa1422d5b.png?alt=media&token=999c2769-4b3c-4f72-9e85-1e92d17b7fb4",
+            //       ),
+            //     ),
+            //
+            //   ),
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.all(50.0),
+                    padding: const EdgeInsets.fromLTRB(50, 8, 50, 50),
                     child: Text('Digital Notes', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
                   ),
+                ),
+                Container(
+
+                  child: CircleAvatar(
+                    radius: 85,
+                    backgroundImage: NetworkImage(
+                      "https://firebasestorage.googleapis.com/v0/b/student-helper-ca22a.appspot.com/o/Semester1%2FLogo%2F5c04d8cc64ff4c2b931f98aaa1422d5b%20(1).png?alt=media&token=8e5f4fd7-7537-4419-937f-c19795e65449",
+                    ),
+                  ),
+
                 ),
             Padding(
                 padding: EdgeInsets.all(30.0),
