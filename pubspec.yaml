@@ -90,6 +90,7 @@ flutter:
     - assets/images/clock.png
     - assets/images/light-1.png
     - assets/images/light-2.png
+    - assets/images/Illustration.png
 
     - assets/images/ask.jpg
   #   - images/a_dot_ham.jpeg

@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -154,49 +155,68 @@ class _AddPostScreenState extends State<AddPostScreen> {
              Center(
               child :  SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 100, 20, 5),
+                  padding: const EdgeInsets.fromLTRB(20, 70, 20, 150),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                      children:  [
                        Image.asset(
-                         'assets/images/ask.jpg',
-                         height: 200,
-                         width: 200,
-                       ),
-                       Text(
-                         'Hey, Do you have a problem? ',
-                         style: TextStyle(
-                             fontSize: 45,
-                             color: Colors.green,
-                             decoration: TextDecoration.underline,
-                             decorationStyle: TextDecorationStyle.dashed,
-                             decorationColor: Colors.orange,
-                             decorationThickness: 3),
+                         'assets/images/Illustration.png',
+                         height: 300,
+                         width: 400,
                        ),
                        SizedBox(
                          height: 100,
                        ),
+                       Text(
+                         'Hey, Do you have a problem? ',
+                         style: TextStyle(
+                             fontSize: 20,
+                             color: Colors.black,
+                             //decoration: TextDecoration.underline,
+                             //decorationStyle: TextDecorationStyle.dashed,
+                             //decorationColor: Colors.orange,
+                             //decorationThickness: 3
+                           ),
+                       ),
+                       SizedBox(
+                         height: 10,
+                       ),
 
                        Text(
-                         'Ask Your Friends ',
+                         'You can ask your friends about the problem ',
                          style: TextStyle(
-                           fontSize: 45,
-                           color: Colors.purple,
-                           decoration: TextDecoration.underline,
-                           decorationStyle: TextDecorationStyle.dashed,
-                           decorationThickness: 2,
-                           decorationColor: Colors.red,
+                           fontSize: 16,
+                           // color: Colors.black,
+                           //fontFeatures:
+                           // decoration: TextDecoration.underline,
+                           // decorationStyle: TextDecorationStyle.dashed,
+                           // decorationThickness: 2,
+                           // decorationColor: Colors.red,
+                         ),
+                       ),
+                       Text(
+                         'and discuss the solution here.',
+                         style: TextStyle(
+                           fontSize: 16,
+                           // color: Colors.black,
+                           //fontFeatures:
+                           // decoration: TextDecoration.underline,
+                           // decorationStyle: TextDecorationStyle.dashed,
+                           // decorationThickness: 2,
+                           // decorationColor: Colors.red,
                          ),
                        ),
                        Padding(
-                         padding: const EdgeInsets.fromLTRB(10, 100, 20, 5),
+                         padding: const EdgeInsets.fromLTRB(10, 80, 20, 5),
                          child: TextButton(
                            child: Text('Ask Here'),
                            style: TextButton.styleFrom(
                              primary: Colors.white,
-                             backgroundColor: Colors.teal,
+                             backgroundColor: Color.fromRGBO(143, 148, 251, 2),
+                             fixedSize: Size.fromWidth(100),
                              onSurface: Colors.grey,
                            ),
+
                                onPressed: () => _selectImage(context),
 
                          ),
