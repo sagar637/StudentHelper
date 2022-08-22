@@ -28,75 +28,98 @@ class _HomeScreenState extends State<HomeScreen> {
           automaticallyImplyLeading: false,
         centerTitle: true,
         title: Text(" Digital Notes"),
-        backgroundColor: Colors.black
+        backgroundColor: Color.fromRGBO(143, 148, 251, 2),
       ),
 
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('notes').snapshots(),
-        builder: (context,
-            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+      body: Padding(
+        padding: const EdgeInsets.all(17.0),
+        child: Container(
+          child: SingleChildScrollView(
+          child: Column(
+          children: <Widget> [
+          Container(
 
-          }
-          return ListView.builder(
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (ctx, index) => Container(
-              // margin: EdgeInsets.symmetric(
-              //   horizontal: width > webScreenSize ? width * 0.3 : 0,
-              //   vertical: width > webScreenSize ? 15 : 0,
-              // ),
-             child:
-              Homecard(
-                snap: snapshot.data!.docs[index].data(),
 
-              ),
+          height: 300,
+          // decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //         image: AssetImage('assets/images/background.png'),
+          //         fit: BoxFit.fill
+          //     )
+          // ),
+          child: StreamBuilder(
+            stream: FirebaseFirestore.instance.collection('notes').snapshots(),
+            builder: (context,
+                AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
 
-            ),
-          );
-        },
-      ),
-      // ListView(
-      //     padding: const EdgeInsets.all(8),
-      //     children: <Widget>[
+              }
+              return ListView.builder(
 
-          //   Card(
-          //       child: ListTile(
-          //           title: Text("BCIS"),
-          //           subtitle: Text("BCIS Study Materials"),
-          //           leading:
-          //               CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-          //           trailing: Icon(Icons.arrow_forward),
-          //           onTap: () {
-          //             Navigator.pushNamed(context, 'BCIS');
-          //           })),
-          //   Card(
-          //       child: ListTile(
-          //           title: Text("BBA"),
-          //           subtitle: Text("BBA Study Materials"),
-          //           leading:
-          //               CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-          //           trailing: Icon(Icons.arrow_forward))),
-          //   Card(
-          //       child: ListTile(
-          //     title: Text("BBA-BI"),
-          //     subtitle: Text("BBA-BI Study Materials"),
-          //     leading: CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-          //     trailing: Icon(Icons.arrow_forward),
-          //     // onTap: () {
-          //     //   Navigator.pushNamed(context, 'BBA_BI');
-          //     // }
-          //   )),
-          //   Card(
-          //       child: ListTile(
-          //           title: Text("MBA"),
-          //           subtitle: Text("MBA Study Materials"),
-          //           leading:
-          //               CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
-          //           trailing: Icon(Icons.arrow_forward)))
-          // ],),
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (ctx, index) => Container(
+                  // margin: EdgeInsets.symmetric(
+                  //   horizontal: width > webScreenSize ? width * 0.3 : 0,
+                  //   vertical: width > webScreenSize ? 15 : 0,
+                  // ),
+                 child:
+                  Homecard(
+                    snap: snapshot.data!.docs[index].data(),
+
+                  ),
+
+                ),
+              );
+            },
+          ),
+        ),
+        // ListView(
+        //     padding: const EdgeInsets.all(8),
+        //     children: <Widget>[
+
+            //   Card(
+            //       child: ListTile(
+            //           title: Text("BCIS"),
+            //           subtitle: Text("BCIS Study Materials"),
+            //           leading:
+            //               CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+            //           trailing: Icon(Icons.arrow_forward),
+            //           onTap: () {
+            //             Navigator.pushNamed(context, 'BCIS');
+            //           })),
+            //   Card(
+            //       child: ListTile(
+            //           title: Text("BBA"),
+            //           subtitle: Text("BBA Study Materials"),
+            //           leading:
+            //               CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+            //           trailing: Icon(Icons.arrow_forward))),
+            //   Card(
+            //       child: ListTile(
+            //     title: Text("BBA-BI"),
+            //     subtitle: Text("BBA-BI Study Materials"),
+            //     leading: CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+            //     trailing: Icon(Icons.arrow_forward),
+            //     // onTap: () {
+            //     //   Navigator.pushNamed(context, 'BBA_BI');
+            //     // }
+            //   )),
+            //   Card(
+            //       child: ListTile(
+            //           title: Text("MBA"),
+            //           subtitle: Text("MBA Study Materials"),
+            //           leading:
+            //               CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+            //           trailing: Icon(Icons.arrow_forward)))
+            // ],),
+    ]
+    )
+    )
+    ),
+      )
     );
 
 

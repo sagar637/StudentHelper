@@ -9,14 +9,9 @@ import '../../constanst/constants.dart';
 
 class FeedScreen extends StatefulWidget {
   const FeedScreen({Key? key}) : super(key: key);
-
   @override
   State<FeedScreen> createState() => _FeedScreenState();
 }
-
-
-
-
 class _FeedScreenState extends State<FeedScreen> {
   @override
   Widget build(BuildContext context) {
@@ -29,7 +24,8 @@ class _FeedScreenState extends State<FeedScreen> {
             automaticallyImplyLeading: false,
         //backgroundColor: mobileBackgroundColor,
         centerTitle: true,
-        title: Text("Feed"), // add logo in this page at appBar
+        title: Text("Feed"),
+            backgroundColor: Color.fromRGBO(143, 148, 251, 2),// add logo in this page at appBar
         // title: SvgPicture.asset(
         //   'assets/ic_instagram.svg',
         //   color: primaryColor,

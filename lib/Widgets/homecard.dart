@@ -15,6 +15,17 @@ class _HomecardState extends State<Homecard> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+                color: Color.fromRGBO(143, 148, 251, 2),
+                blurRadius: 4.0,
+                offset: Offset(0, 5)
+            )
+          ]
+      ),
       child: Card(
           child: ListTile(
               title: Text(widget.snap['course']),
