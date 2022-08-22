@@ -359,7 +359,7 @@ class _PostCardState extends State<PostCard> {
                     child: Text(
                       'Submit Answer',
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.red,
                       ),
                     ),

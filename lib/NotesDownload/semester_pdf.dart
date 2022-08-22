@@ -57,7 +57,7 @@ class _SemesterPDF extends State<SemesterPDF> {
                                      //     .downloadsDirectory;
                                      // if (dir != null) {
                                      Directory dir = Directory(
-                                         '/storage/emulated/0/Downloads');
+                                         '/storage/emulated/0/Download');
                                      //Directory? appDocDir = await getExternalStorageDirectory();
                                      //String appDocPath = appDocDir.path;
                                      String savename = widget

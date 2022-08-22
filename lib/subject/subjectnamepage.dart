@@ -31,7 +31,7 @@ class _SubjectesState extends State<Subjectes> {
                     child: ListTile(
                         title: Text(widget.snap[index]['name']),
                         subtitle: Text( widget.snap[index]['name'] + "BCIS Study Materials"),
-                        leading: CircleAvatar(backgroundImage: AssetImage("assets/1.jpg")),
+                        leading: CircleAvatar(backgroundImage: AssetImage("assets/1.png")),
                         trailing: Icon(Icons.precision_manufacturing),
                         onTap: () {
                           Navigator.push(
