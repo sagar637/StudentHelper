@@ -31,16 +31,14 @@ class _AddPostScreenState extends State<AddPostScreen> {
     fetchUserDetails();
   }
 
-  void fetchUserDetails() async{
+  void fetchUserDetails() async {
     User _user = await AuthMethods().getUserDetails();
     setState(() {
       user = _user;
     });
   }
 
-
   _selectImage(BuildContext parentContext) async {
-
     return showDialog(
       context: parentContext,
       builder: (BuildContext context) {
@@ -151,99 +149,93 @@ class _AddPostScreenState extends State<AddPostScreen> {
             color: Colors.black,
           ))
         : _file == null
-            ?
-             Center(
-              child :  SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 70, 20, 150),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                     children:  [
-                       Image.asset(
-                         'assets/images/Illustration.png',
-                         height: 300,
-                         width: 400,
-                       ),
-                       SizedBox(
-                         height: 100,
-                       ),
-                       Text(
-                         'Hey, Do you have a problem? ',
-                         style: TextStyle(
-                             fontSize: 20,
-                             color: Colors.black,
-                             //decoration: TextDecoration.underline,
-                             //decorationStyle: TextDecorationStyle.dashed,
-                             //decorationColor: Colors.orange,
-                             //decorationThickness: 3
-                           ),
-                       ),
-                       SizedBox(
-                         height: 10,
-                       ),
-
-                       Text(
-                         'You can ask your friends about the problem ',
-                         style: TextStyle(
-                           fontSize: 16,
-                           // color: Colors.black,
-                           //fontFeatures:
-                           // decoration: TextDecoration.underline,
-                           // decorationStyle: TextDecorationStyle.dashed,
-                           // decorationThickness: 2,
-                           // decorationColor: Colors.red,
-                         ),
-                       ),
-                       Text(
-                         'and discuss the solution here.',
-                         style: TextStyle(
-                           fontSize: 16,
-                           // color: Colors.black,
-                           //fontFeatures:
-                           // decoration: TextDecoration.underline,
-                           // decorationStyle: TextDecorationStyle.dashed,
-                           // decorationThickness: 2,
-                           // decorationColor: Colors.red,
-                         ),
-                       ),
-                       Padding(
-                         padding: const EdgeInsets.fromLTRB(10, 80, 20, 5),
-                         child: TextButton(
-                           child: Text('Ask Here'),
-                           style: TextButton.styleFrom(
-                             primary: Colors.white,
-                             backgroundColor: Color.fromRGBO(143, 148, 251, 2),
-                             fixedSize: Size.fromWidth(100),
-                             onSurface: Colors.grey,
-                           ),
-
-                               onPressed: () => _selectImage(context),
-
-                         ),
-                       )
-                     ],
-                   ),
+            ? Center(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 70, 20, 150),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/images/Illustration.png',
+                          height: 300,
+                          width: 400,
+                        ),
+                        SizedBox(
+                          height: 100,
+                        ),
+                        Text(
+                          'Hey, Do you have a problem? ',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            //decoration: TextDecoration.underline,
+                            //decorationStyle: TextDecorationStyle.dashed,
+                            //decorationColor: Colors.orange,
+                            //decorationThickness: 3
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'You can ask your friends about the problem ',
+                          style: TextStyle(
+                            fontSize: 16,
+                            // color: Colors.black,
+                            //fontFeatures:
+                            // decoration: TextDecoration.underline,
+                            // decorationStyle: TextDecorationStyle.dashed,
+                            // decorationThickness: 2,
+                            // decorationColor: Colors.red,
+                          ),
+                        ),
+                        Text(
+                          'and discuss the solution here.',
+                          style: TextStyle(
+                            fontSize: 16,
+                            // color: Colors.black,
+                            //fontFeatures:
+                            // decoration: TextDecoration.underline,
+                            // decorationStyle: TextDecorationStyle.dashed,
+                            // decorationThickness: 2,
+                            // decorationColor: Colors.red,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 80, 20, 5),
+                          child: TextButton(
+                            child: Text('Ask Here'),
+                            style: TextButton.styleFrom(
+                              primary: Colors.white,
+                              backgroundColor: Color.fromRGBO(143, 148, 251, 2),
+                              fixedSize: Size.fromWidth(100),
+                              onSurface: Colors.grey,
+                            ),
+                            onPressed: () => _selectImage(context),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-               //  child: Row(
-               //    mainAxisAlignment: MainAxisAlignment.center,
-               //    children: [
-               //      // IconButton(
-               //      //   icon: const Icon(Icons.upload),
-               //      //   onPressed: () => _selectImage(context),
-               //      // ),
-               //      Text("Hey Do you have a Problem? you ask Your friend"),
-               //      SizedBox(width: 5,),
-               // IconButton(
-               //   icon: const Icon(Icons.upload),
-               //   onPressed: () => _selectImage(context),
-               // ),
-               //    ],
-               //
-               //  ),
-
+                //  child: Row(
+                //    mainAxisAlignment: MainAxisAlignment.center,
+                //    children: [
+                //      // IconButton(
+                //      //   icon: const Icon(Icons.upload),
+                //      //   onPressed: () => _selectImage(context),
+                //      // ),
+                //      Text("Hey Do you have a Problem? you ask Your friend"),
+                //      SizedBox(width: 5,),
+                // IconButton(
+                //   icon: const Icon(Icons.upload),
+                //   onPressed: () => _selectImage(context),
+                // ),
+                //    ],
+                //
+                //  ),
               )
-
             : Scaffold(
                 appBar: AppBar(
                   backgroundColor: Color.fromRGBO(143, 148, 251, 2),

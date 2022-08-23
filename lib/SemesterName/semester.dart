@@ -20,8 +20,9 @@ class _SemesterState extends State<Semester> {
             automaticallyImplyLeading: false,
             centerTitle: true,
             title: Text(" Digital Notes"),
-            backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(143, 148, 251, 2),
         ),
+
       body: ListView.builder(
           itemCount: widget.snap!.length,
           itemBuilder: (ctx, index) => Container(
@@ -30,21 +31,37 @@ class _SemesterState extends State<Semester> {
         //   vertical: width > webScreenSize ? 15 : 0,
         // ),
        child:
-          Card(
-              child: ListTile(
-                 title: Text(widget.snap[index]['name']),
-                 subtitle: Text( widget.snap[index]['name'] + "BCIS Study Materials"),
-                 leading: CircleAvatar(backgroundImage: AssetImage("assets/1.png")),
-                 trailing: Icon(Icons.abc),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                Subjectes(snap: widget.snap[index]['subject'],)));
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color.fromRGBO(143, 148, 251, 2),
+                      blurRadius: 4.0,
+                      offset: Offset(0, 5)
+                  )
+                ]
+            ),
+            child: Card(
+                elevation: 50,
+                shadowColor: Colors.black,
+                color: Color.fromRGBO(143, 148, 251, 2),
+                child: ListTile(
+                   title: Text(widget.snap[index]['name']),
+                   subtitle: Text( widget.snap[index]['name'] + "BCIS Study Materials"),
+                   leading: CircleAvatar(backgroundImage: AssetImage("assets/1.png")),
+                   trailing: Icon(Icons.note_sharp),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Subjectes(snap: widget.snap[index]['subject'],)));
 
-                 }
-               ))
+                   }
+                 )),
+          )
 
       )));
   }

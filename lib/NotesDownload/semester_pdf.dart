@@ -58,14 +58,13 @@ class _SemesterPDF extends State<SemesterPDF> {
                                      // if (dir != null) {
                                      Directory dir = Directory(
                                          '/storage/emulated/0/Download');
-                                     //Directory? appDocDir = await getExternalStorageDirectory();
-                                     //String appDocPath = appDocDir.path;
+                                     // Directory? appDocDir = await getExternalStorageDirectory();
+                                     // String appDocPath = appDocDir.path;
                                      String savename = widget
                                          .snap[index]['name'];
                                      String getFileExtension = "." + file.split('.').last;
                                      getFileExtension = getFileExtension.split('?').first;
-
-                                     String savePath = dir.path + "/$savename"+ getFileExtension;
+                                   String savePath = dir.path + "/$savename" + getFileExtension;
                                      print(savePath);
                                      //output:  /storage/emulated/0/Download/banner.png
                                      try {
