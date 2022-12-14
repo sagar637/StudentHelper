@@ -45,7 +45,7 @@ class _SubjectesState extends State<Subjectes> {
                       color: Color.fromRGBO(143, 148, 251, 2),
                       child: ListTile(
                           title: Text(widget.snap[index]['name']),
-                          subtitle: Text( widget.snap[index]['name'] + "BCIS Study Materials"),
+                          subtitle: Text( widget.snap[index]['name'] + " Study Materials",),
                           leading: CircleAvatar(backgroundImage: AssetImage("assets/1.png")),
                           trailing: Icon(Icons.note_sharp),
                           onTap: () {

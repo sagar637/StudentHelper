@@ -31,17 +31,17 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               },
             ),
           ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children:[
-                RaisedButton(
-                    color: Theme.of(context).accentColor,
-                    child: Text('Reset Password'),
-                    onPressed: (){
-                      auth.sendPasswordResetEmail(email: _email!);
-                      Navigator.of(context).pop();
-                    }),
-              ])
+          // Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //     children:[
+          //       RaisedButton(
+          //           color: Theme.of(context).accentColor,
+          //           child: Text('Reset Password'),
+          //           onPressed: (){
+          //             auth.sendPasswordResetEmail(email: _email!);
+          //             Navigator.of(context).pop();
+          //           }),
+          //     ])
         ],),
     );
   }
