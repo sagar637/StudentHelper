@@ -21,22 +21,21 @@ class SemesterPDF extends StatefulWidget {
 }
 
 class _SemesterPDF extends State<SemesterPDF> {
+  double downloadprogress = 0.0;
+
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        title: Text(" Digital Notes "),
-        backgroundColor: Color.fromRGBO(143, 148, 251, 2),
-      ),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          title: Text(" Digital Notes "),
+          backgroundColor: Colors.indigo),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // buildHeader(widget.snap!.length),
           const SizedBox(height: 12),
           Expanded(
             child: ListView.builder(
-              // itemCount: files.length,
               itemCount: widget.snap!.length,
               itemBuilder: (context, index) {
                 final file = widget.snap[index]['file'];
@@ -48,6 +47,15 @@ class _SemesterPDF extends State<SemesterPDF> {
                         if (!status.isGranted) {
                           await Permission.storage.request();
                         }
+                        setState(() {
+                          downloadprogress = 0.0;
+                        });
+                        LinearProgressIndicator(
+                          value: downloadprogress,
+                          backgroundColor: Colors.grey[200],
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.blue),
+                        );
                         // var dir = await DownloadsPathProvider
                         //     .downloadsDirectory;
                         // if (dir != null) {
@@ -66,6 +74,9 @@ class _SemesterPDF extends State<SemesterPDF> {
                           Dio().download(file, savePath,
                               onReceiveProgress: (received, total) {
                             if (total != -1) {
+                              setState(() {
+                                downloadprogress = received / total;
+                              });
                               print(
                                   (received / total * 100).toStringAsFixed(0) +
                                       "%");
